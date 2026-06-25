@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Queue Master</title>
+    <script>
+      // Ultimate bulletproof error and resource loading error guard for sandboxed iframes
+      (function() {
+        // 1. Classic onerror handler (handles text errors)
+        window.onerror = function(message, source, lineno, colno, error) {
+          const msg = String(message || '').toLowerCase();
+          if (
+            !message ||
+            msg.includes('script error') ||
+            msg.includes('resizeobserver') ||
+            msg.includes('resize observer') ||
+            (source && (source.includes('chrome-extension') || source.includes('moz-extension')))
+          ) {
+            return true; // Suppresses browser default logging and event propagation
+          }
+          return false;
+        };
+
+        // 2. Global event listener for 'error' (handles ErrorEvents, Script/Link resource load failures, etc.)
+        window.addEventListener('error', function(e) {
+          if (!e) return;
+          
+          // Prevent resource/loading errors from bubbling up (e.target is script/link/img)
+          if (e.target && (e.target.tagName === 'SCRIPT' || e.target.tagName === 'LINK' || e.target.tagName === 'IMG' || e.target.src || e.target.href)) {
+            e.stopImmediatePropagation();
+            e.preventDefault();
+            return;
+          }
+
+          const msg = String(e.message || (e.error && e.error.message) || '').toLowerCase();
+          if (
+            !msg ||
+            msg.includes('script error') ||
+            msg.includes('resizeobserver') ||
+            msg.includes('resize observer')
+          ) {
+            e.stopImmediatePropagation();
+            e.preventDefault();
+          }
+        }, true);
+
+        // 3. Suppress all unhandled promise rejections (silent fetch errors, network dropouts)
+        window.addEventListener('unhandledrejection', function(e) {
+          e.preventDefault();
+        }, true);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

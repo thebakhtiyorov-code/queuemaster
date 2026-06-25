@@ -1,0 +1,222 @@
+{
+  "services": [
+    {
+      "id": "srv-1",
+      "title": "OLED Screen Replacement",
+      "description": "Replace cracked display glass and touch digitization layer with OEM original unit.",
+      "durationMinutes": 45,
+      "price": 149,
+      "isAvailable": true,
+      "category": "Device Repair"
+    },
+    {
+      "id": "srv-2",
+      "title": "Full Vehicle Diagnostic Scan",
+      "description": "Comprehensive digital computer OBD-II analysis of ECU, transmission, and power systems.",
+      "durationMinutes": 30,
+      "price": 59,
+      "isAvailable": true,
+      "category": "Auto Care"
+    },
+    {
+      "id": "srv-3",
+      "title": "Precision Haircut & Trim",
+      "description": "Signature hair styling with hot towel neck shave, styling pomade, and wash.",
+      "durationMinutes": 40,
+      "price": 45,
+      "isAvailable": true,
+      "category": "Hair & Salon"
+    },
+    {
+      "id": "srv-4",
+      "title": "High-Capacity Battery Swap",
+      "description": "Certified replacement of deteriorating smartphone or laptop battery, with seal renewal.",
+      "durationMinutes": 20,
+      "price": 79,
+      "isAvailable": true,
+      "category": "Device Repair"
+    },
+    {
+      "id": "srv-5",
+      "title": "Synthetic Oil & Filter Service",
+      "description": "Flush old motor lubricants and replace with Castrol synthetic blend oil and premium filter.",
+      "durationMinutes": 40,
+      "price": 89,
+      "isAvailable": true,
+      "category": "Auto Care"
+    },
+    {
+      "id": "srv-6",
+      "title": "Aura Refreshing Hydrafacial",
+      "description": "Skincare nourishment involving extraction, cleansing, exfoliation, and custom hydration.",
+      "durationMinutes": 50,
+      "price": 95,
+      "isAvailable": true,
+      "category": "Hair & Salon"
+    }
+  ],
+  "staff": [
+    {
+      "id": "stf-1",
+      "name": "John Doe",
+      "role": "staff",
+      "specialty": "Device Hardware Repair",
+      "isAvailable": true,
+      "email": "john@queuemaster.com",
+      "imageUrl": "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?w=120&auto=format&fit=crop&q=70"
+    },
+    {
+      "id": "stf-2",
+      "name": "Sarah Connor",
+      "role": "staff",
+      "specialty": "Automotive Electrical & ECUs",
+      "isAvailable": true,
+      "email": "sarah@queuemaster.com",
+      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&auto=format&fit=crop&q=70"
+    },
+    {
+      "id": "stf-3",
+      "name": "Alex Rivera",
+      "role": "staff",
+      "specialty": "Cosmetology & Styling Specialist",
+      "isAvailable": true,
+      "email": "alex@queuemaster.com",
+      "imageUrl": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=120&auto=format&fit=crop&q=70"
+    },
+    {
+      "id": "stf-4",
+      "name": "Emily Vance",
+      "role": "admin",
+      "specialty": "Operations Manager & Senior Dispatcher",
+      "isAvailable": true,
+      "email": "emily@queuemaster.com",
+      "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&auto=format&fit=crop&q=70"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord-101",
+      "customerId": "cust-1",
+      "customerName": "Marcus Aurelius",
+      "customerEmail": "marcus@classical.org",
+      "customerPhone": "+1 (555) 124-5555",
+      "serviceId": "srv-1",
+      "assignedStaffId": "stf-1",
+      "status": "in_progress",
+      "scheduledTime": "2026-06-24T15:40:18.912Z",
+      "totalPrice": 149,
+      "updatedAt": "2026-06-24T16:40:18.913Z",
+      "notes": "Cracked phone glass. Keep existing motherboard."
+    },
+    {
+      "id": "ord-102",
+      "customerId": "cust-2",
+      "customerName": "Ada Lovelace",
+      "customerEmail": "ada@analytical.net",
+      "customerPhone": "+1 (555) 789-2321",
+      "serviceId": "srv-2",
+      "assignedStaffId": "stf-2",
+      "status": "ready",
+      "scheduledTime": "2026-06-24T14:40:18.913Z",
+      "totalPrice": 59,
+      "updatedAt": "2026-06-24T16:40:18.913Z",
+      "notes": "Car check engine light. Diagnose O2 sensors."
+    },
+    {
+      "id": "ord-103",
+      "customerId": "cust-3",
+      "customerName": "Grace Hopper",
+      "customerEmail": "grace@nanoseconds.edu",
+      "customerPhone": "+1 (555) 456-9911",
+      "serviceId": "srv-3",
+      "assignedStaffId": "stf-3",
+      "status": "pending",
+      "scheduledTime": "2026-06-24T17:40:18.913Z",
+      "totalPrice": 45,
+      "updatedAt": "2026-06-24T16:40:18.913Z",
+      "notes": "High fade haircut appointment at 9am."
+    },
+    {
+      "id": "ord-104",
+      "customerId": "cust-4",
+      "customerName": "Alan Turing",
+      "customerEmail": "alan@bletchley.gov",
+      "customerPhone": "+1 (555) 987-1941",
+      "serviceId": "srv-4",
+      "assignedStaffId": "stf-1",
+      "status": "completed",
+      "scheduledTime": "2026-06-15T14:30:00Z",
+      "totalPrice": 79,
+      "updatedAt": "2026-06-15T15:10:00Z",
+      "notes": "Laptop battery swollen. Disposed of safely."
+    },
+    {
+      "id": "ord-105",
+      "customerId": "cust-5",
+      "customerName": "Nikola Tesla",
+      "customerEmail": "nikola@alternating.co",
+      "customerPhone": "+1 (555) 369-3693",
+      "serviceId": "srv-5",
+      "assignedStaffId": "stf-2",
+      "status": "completed",
+      "scheduledTime": "2026-06-14T10:00:00Z",
+      "totalPrice": 89,
+      "updatedAt": "2026-06-14T10:45:00Z",
+      "notes": "Synthetic premium replacement pack and filter wash."
+    },
+    {
+      "id": "ord-106",
+      "customerId": "cust-6",
+      "customerName": "Katherine Johnson",
+      "customerEmail": "katherine@nasa.gov",
+      "customerPhone": "+1 (555) 111-2222",
+      "serviceId": "srv-6",
+      "assignedStaffId": "stf-3",
+      "status": "completed",
+      "scheduledTime": "2026-06-15T11:00:00Z",
+      "totalPrice": 95,
+      "updatedAt": "2026-06-15T11:55:00Z",
+      "notes": "Requested organic skin cooling spray."
+    },
+    {
+      "id": "ord-107",
+      "customerId": "cust-7",
+      "customerName": "Marie Curie",
+      "customerEmail": "marie@radium.paris",
+      "customerPhone": "+1 (555) 888-9999",
+      "serviceId": "srv-1",
+      "assignedStaffId": "stf-1",
+      "status": "completed",
+      "scheduledTime": "2026-06-13T16:00:00Z",
+      "totalPrice": 149,
+      "updatedAt": "2026-06-13T17:15:00Z"
+    },
+    {
+      "id": "ord-108",
+      "customerId": "cust-8",
+      "customerName": "Steve Jobs",
+      "customerEmail": "steve@apple.com",
+      "customerPhone": "+1 (555) 800-1984",
+      "serviceId": "srv-4",
+      "assignedStaffId": "stf-2",
+      "status": "pending",
+      "scheduledTime": "2026-06-24T19:40:18.913Z",
+      "totalPrice": 79,
+      "updatedAt": "2026-06-24T16:40:53.250Z",
+      "notes": "iPad Battery refresh. Must check sleep sensor."
+    },
+    {
+      "id": "ord-109",
+      "customerId": "cust-9",
+      "customerName": "Richard Feynman",
+      "customerEmail": "feynman@caltech.edu",
+      "customerPhone": "+1 (555) 303-3030",
+      "serviceId": "srv-5",
+      "assignedStaffId": "stf-2",
+      "status": "completed",
+      "scheduledTime": "2026-06-12T09:30:00Z",
+      "totalPrice": 89,
+      "updatedAt": "2026-06-12T10:10:00Z"
+    }
+  ]
+}
