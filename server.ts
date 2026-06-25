@@ -9,7 +9,7 @@ import fs from 'fs';
 import { createServer as createViteServer } from 'vite';
 import { GoogleGenAI, Type } from '@google/genai';
 import dotenv from 'dotenv';
-import { Service, Order, Staff, AnalyticsSummary } from './src/types';
+import { Service, Order, Staff, AnalyticsSummary } from './src/types.ts';
 
 dotenv.config();
 
