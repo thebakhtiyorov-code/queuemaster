@@ -67,7 +67,7 @@ function parseCleanJson(text: string): any {
 let aiClient: any = null;
 function getGeminiClient() {
   const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey || apiKey === 'MY_GEMINI_API_KEY') {
+  if (!apiKey || apiKey === 'AIzaSyAhihWvvC_zrHCfkjSBiDt1Gbfwpmyu7FY') {
     return null;
   }
   if (!aiClient) {
@@ -840,7 +840,7 @@ app.get('/api/analytics', (req, res) => {
 // ----------------------------------------------------
 // AI GEMINI SERVICES (Optimization & Booking Chatbot)
 // ----------------------------------------------------
-app.post('/api/gemini/optimize', async (req, res) => {
+app.post('AIzaSyAhihWvvC_zrHCfkjSBiDt1Gbfwpmyu7FY/api/gemini/optimize', async (req, res) => {
   const db = readDb();
   const ai = getGeminiClient();
 
@@ -939,7 +939,7 @@ Return only valid JSON. Do not include markdown code block syntax inside your re
 });
 
 // Customer Interactive Booking & Inquiry Assistant
-app.post('/api/gemini/customer-chat', async (req, res) => {
+app.post('AIzaSyAhihWvvC_zrHCfkjSBiDt1Gbfwpmyu7FY/api/gemini/customer-chat', async (req, res) => {
   const { message } = req.body;
   const db = readDb();
   const ai = getGeminiClient();

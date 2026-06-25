@@ -144,7 +144,7 @@ export default function CustomerMobileApp({
     setChatLoading(true);
 
     try {
-      const res = await fetch('/api/gemini/customer-chat', {
+      const res = await fetch('AIzaSyAhihWvvC_zrHCfkjSBiDt1Gbfwpmyu7FY/api/gemini/customer-chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userText }),
