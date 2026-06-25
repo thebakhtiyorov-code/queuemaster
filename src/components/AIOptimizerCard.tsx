@@ -41,7 +41,7 @@ const runOptimizer = async () => {
     setLoading(true);
     try {
       // 🌟 To'g'ridan-to'g'ri Render manzili yozildi
-      const res = await fetch('https://queuemaster-system.onrender.com/api/gemini/optimize', {
+      const res = await fetch('AIzaSyAhihWvvC_zrHCfkjSBiDt1Gbfwpmyu7FY/api/gemini/optimize', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });
