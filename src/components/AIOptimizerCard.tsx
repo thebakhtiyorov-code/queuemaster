@@ -37,10 +37,11 @@ export default function AIOptimizerCard({ onReassignAction, staffList }: AIOptim
   const [data, setData] = useState<OptimizerData | null>(null);
   const [appliedActions, setAppliedActions] = useState<string[]>([]);
 
-  const runOptimizer = async () => {
+const runOptimizer = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/gemini/optimize', {
+      // 🌟 To'g'ridan-to'g'ri Render manzili yozildi
+      const res = await fetch('https://queuemaster-system.onrender.com/api/gemini/optimize', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });
