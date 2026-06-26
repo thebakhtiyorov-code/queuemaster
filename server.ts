@@ -1014,10 +1014,11 @@ async function startServer() {
   }
 
 // Render portni o'z muhitidan beradi, agar bo'lmasa 10000 portini ishlat
-const port = parseInt(process.env.PORT || '10000', 10);
+// PORT ni qattiq 10000 qilib yozma, Render nima desa, shu bo'lsin
+const PORT = process.env.PORT || 3000;
 
-app.listen(port, '0.0.0.0', () => {
-  console.log(`Server Renderda ${port} portida eshitmoqda!`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server ${PORT} portida ishga tushdi!`);
 });
 }
 
