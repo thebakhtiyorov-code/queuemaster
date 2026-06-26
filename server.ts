@@ -3,40 +3,31 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-// 1. ENG TEPADA: Barcha importlar
-import { fileURLToPath } from 'url';
-import { dirname, resolve, join } from 'path';
-import dotenv from 'dotenv';
+// 1. IMPORTLAR (Faqat tepada)
 import express from 'express';
-import cors from 'cors'; // CORS ni qo'shding (yoki qo'shishing kerak)
+import cors from 'cors';
+import dotenv from 'dotenv';
+import path from 'path';
 import fs from 'fs';
-import { createServer as createViteServer } from 'vite';
-import { GoogleGenAI, Type } from '@google/genai';
-import { Service, Order, Staff, AnalyticsSummary } from './src/types';
 
-// 2. O'ZGARUVCHILARNI ANIQSh:
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// 2. SOZLAMALAR
+dotenv.config(); // Render o'zidan o'qiydi
 
-// 3. DOTENV SOZLASH:
-dotenv.config({ path: resolve(__dirname, '.env') });
-
-// 4. APP VA MIDDLEWARE:
 const app = express();
-app.use(cors()); // CORS ni shu yerda chaqir
+app.use(cors()); // CORS muammosini hal qiladi
 app.use(express.json());
 
-// 5. TEKSHIRUV (FAQAT BIR MARTA):
+// 3. API KEY TEKSHIRUV
 console.log("API Key tekshirilmoqda:", process.env.GEMINI_API_KEY ? "TOPILDI ✅" : "TOPILMADI ❌");
 
-// 6. QOLGAN KODLAR:
-const PORT = process.env.PORT || 10000; 
-const DATA_FILE = join(__dirname, 'data.json');
+// 4. PORT VA PATH
+const PORT = process.env.PORT || 10000;
+const DATA_FILE = path.join(process.cwd(), 'data.json');
 
+// 5. SERVERNI ISHGA TUSHIRISH
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server Renderda ${PORT} portida eshitmoqda!`);
+  console.log(`Server Renderda ${PORT} portida ishga tushdi!`);
 });
-
 // Utility to cleanly parse JSON returned by LLM models
 function parseCleanJson(text: string): any {
   if (!text) return {};
