@@ -2,25 +2,40 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
-import path from 'path';
-import 'dotenv/config'; 
-import dotenv from 'dotenv';
-dotenv.config({ path: path.resolve(__dirname, '.env') });
 
+// 1. ENG TEPADA: Barcha importlar
+import { fileURLToPath } from 'url';
+import { dirname, resolve, join } from 'path';
+import dotenv from 'dotenv';
 import express from 'express';
+import cors from 'cors'; // CORS ni qo'shding (yoki qo'shishing kerak)
 import fs from 'fs';
 import { createServer as createViteServer } from 'vite';
 import { GoogleGenAI, Type } from '@google/genai';
 import { Service, Order, Staff, AnalyticsSummary } from './src/types';
 
-// Endi log tekshiruvini qilsak bo'ladi, chunki dotenv allaqachon yuklandi
+// 2. O'ZGARUVCHILARNI ANIQSh:
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// 3. DOTENV SOZLASH:
+dotenv.config({ path: resolve(__dirname, '.env') });
+
+// 4. APP VA MIDDLEWARE:
+const app = express();
+app.use(cors()); // CORS ni shu yerda chaqir
+app.use(express.json());
+
+// 5. TEKSHIRUV (FAQAT BIR MARTA):
 console.log("API Key tekshirilmoqda:", process.env.GEMINI_API_KEY ? "TOPILDI ✅" : "TOPILMADI ❌");
 
-dotenv.config();
+// 6. QOLGAN KODLAR:
+const PORT = process.env.PORT || 10000; 
+const DATA_FILE = join(__dirname, 'data.json');
 
-const app = express();
-const PORT = process.env.PORT || 3000; 
-const DATA_FILE = path.join(process.cwd(), 'data.json');
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server Renderda ${PORT} portida eshitmoqda!`);
+});
 
 // Utility to cleanly parse JSON returned by LLM models
 function parseCleanJson(text: string): any {
@@ -1007,9 +1022,12 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`QueueMaster server booted on http://localhost:${PORT}`);
-  });
+// Render portni o'z muhitidan beradi, agar bo'lmasa 10000 portini ishlat
+const port = parseInt(process.env.PORT || '10000', 10);
+
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server Renderda ${port} portida eshitmoqda!`);
+});
 }
 
 startServer();
