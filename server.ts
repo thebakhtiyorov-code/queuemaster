@@ -1017,9 +1017,8 @@ async function startServer() {
 // PORT ni qattiq 10000 qilib yozma, Render nima desa, shu bo'lsin
 // PORT ni qattiq yozishni to'xtatamiz. 
 // Render muhitida process.env.PORT har doim bo'ladi.
-const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
-
-app.listen(PORT, '0.0.0.0', () => {
+const PORT = process.env.PORT || 3000;
+app.listen(Number(PORT), '0.0.0.0', () => {
   console.log(`Server ${PORT} portida ishga tushdi!`);
 });
 }
