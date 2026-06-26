@@ -1019,10 +1019,9 @@ async function startServer() {
 // Render muhitida process.env.PORT har doim bo'ladi.
 // Portni Render bergan muhitdan olamiz, bo'lmasa 3000 ga o'tamiz
 const PORT = process.env.PORT || 3000;
-
-// PORT ni qattiq yozma, o'zgaruvchidan ol
 app.listen(Number(PORT), '0.0.0.0', () => {
-  console.log(`Server ${PORT} portida ishga tushdi!`);
+  console.log(`Server ${PORT} portida ishga tushdi!`); 
+  // 'Server Renderda 10000 portida...' degan joyini o'chirib, shuni yoz
 });
 }
 
