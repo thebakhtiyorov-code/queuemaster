@@ -2,22 +2,23 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
-import cors from 'cors';
-import express from 'express';
 import path from 'path';
+import 'dotenv/config'; 
+import dotenv from 'dotenv';
+dotenv.config({ path: path.resolve(__dirname, '.env') });
+
+import express from 'express';
 import fs from 'fs';
 import { createServer as createViteServer } from 'vite';
 import { GoogleGenAI, Type } from '@google/genai';
-import dotenv from 'dotenv';
-import { Service, Order, Staff, AnalyticsSummary } from './src/types.ts';
+import { Service, Order, Staff, AnalyticsSummary } from './src/types';
+
+// Endi log tekshiruvini qilsak bo'ladi, chunki dotenv allaqachon yuklandi
+console.log("API Key tekshirilmoqda:", process.env.GEMINI_API_KEY ? "TOPILDI ✅" : "TOPILMADI ❌");
 
 dotenv.config();
 
 const app = express();
-// CORS ruxsatnomasini shu yerga joylashtirdik (Netlify xatosini yo'qotadi)
-app.use(cors());
-app.use(express.json());
-
 const PORT = process.env.PORT || 3000; 
 const DATA_FILE = path.join(process.cwd(), 'data.json');
 
@@ -67,7 +68,7 @@ function parseCleanJson(text: string): any {
 let aiClient: any = null;
 function getGeminiClient() {
   const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey || apiKey === 'AIzaSyAhihWvvC_zrHCfkjSBiDt1Gbfwpmyu7FY') {
+  if (!apiKey || apiKey === 'MY_GEMINI_API_KEY') {
     return null;
   }
   if (!aiClient) {
@@ -840,7 +841,7 @@ app.get('/api/analytics', (req, res) => {
 // ----------------------------------------------------
 // AI GEMINI SERVICES (Optimization & Booking Chatbot)
 // ----------------------------------------------------
-app.post('AIzaSyAhihWvvC_zrHCfkjSBiDt1Gbfwpmyu7FY/api/gemini/optimize', async (req, res) => {
+app.post('/api/gemini/optimize', async (req, res) => {
   const db = readDb();
   const ai = getGeminiClient();
 
@@ -939,7 +940,7 @@ Return only valid JSON. Do not include markdown code block syntax inside your re
 });
 
 // Customer Interactive Booking & Inquiry Assistant
-app.post('AIzaSyAhihWvvC_zrHCfkjSBiDt1Gbfwpmyu7FY/api/gemini/customer-chat', async (req, res) => {
+app.post('/api/gemini/customer-chat', async (req, res) => {
   const { message } = req.body;
   const db = readDb();
   const ai = getGeminiClient();
@@ -1007,7 +1008,7 @@ async function startServer() {
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`QueueMaster server booted on https://queuemaster-system.onrender.com`);
+    console.log(`QueueMaster server booted on http://localhost:${PORT}`);
   });
 }
 
